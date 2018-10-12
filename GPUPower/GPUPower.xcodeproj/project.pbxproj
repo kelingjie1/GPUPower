@@ -1,0 +1,377 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXCopyFilesBuildPhase section */
+		07FE0357216E52910064E37D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		077D6FB1216B0F0900BB0EC5 /* Node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
+		077D6FB2216B0F0900BB0EC5 /* Node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		077D6FC7216B187100BB0EC5 /* NodeData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NodeData.cpp; sourceTree = "<group>"; };
+		077D6FC8216B187100BB0EC5 /* NodeData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NodeData.h; sourceTree = "<group>"; };
+		077D6FF6216B838E00BB0EC5 /* GLTexture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLTexture.h; sourceTree = "<group>"; };
+		077D6FFA216B83FC00BB0EC5 /* GLFrameBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLFrameBuffer.h; sourceTree = "<group>"; };
+		077D6FFE216B844400BB0EC5 /* GLProgram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLProgram.h; sourceTree = "<group>"; };
+		077D7009216B85DF00BB0EC5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		077D700C216B8B3E00BB0EC5 /* GLRenderBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLRenderBuffer.h; sourceTree = "<group>"; };
+		077D700F216C562D00BB0EC5 /* TaskQueue.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TaskQueue.cpp; sourceTree = "<group>"; };
+		077D7010216C562D00BB0EC5 /* TaskQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskQueue.h; sourceTree = "<group>"; };
+		077D7040216C967D00BB0EC5 /* GLContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLContext.h; sourceTree = "<group>"; };
+		077D7043216C979800BB0EC5 /* GLRenderNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLRenderNode.cpp; sourceTree = "<group>"; };
+		077D7044216C979800BB0EC5 /* GLRenderNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLRenderNode.h; sourceTree = "<group>"; };
+		077D705D216C9E9200BB0EC5 /* GLRenderData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLRenderData.cpp; sourceTree = "<group>"; };
+		077D705E216C9E9200BB0EC5 /* GLRenderData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLRenderData.h; sourceTree = "<group>"; };
+		077D7061216CA02F00BB0EC5 /* GLCustomShaderRenderNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLCustomShaderRenderNode.cpp; sourceTree = "<group>"; };
+		077D7062216CA02F00BB0EC5 /* GLCustomShaderRenderNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLCustomShaderRenderNode.h; sourceTree = "<group>"; };
+		077D7067216CA34300BB0EC5 /* Error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Error.h; sourceTree = "<group>"; };
+		077D70A6216DDF1100BB0EC5 /* GLVertexArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLVertexArray.h; sourceTree = "<group>"; };
+		077D70AA216DE32D00BB0EC5 /* GLBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBuffer.h; sourceTree = "<group>"; };
+		07FE0359216E52910064E37D /* libGPUPower.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGPUPower.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		07FE0362216E54520064E37D /* GPUPower.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUPower.h; sourceTree = "<group>"; };
+		07FE0364216F2D020064E37D /* Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		07FE0370216F6F7B0064E37D /* GLObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLObject.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		07FE0356216E52910064E37D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		077D6F95216B0D1100BB0EC5 = {
+			isa = PBXGroup;
+			children = (
+				077D6FA1216B0D1100BB0EC5 /* Source */,
+				077D6FA0216B0D1100BB0EC5 /* Products */,
+				077D7008216B85DE00BB0EC5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		077D6FA0216B0D1100BB0EC5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				07FE0359216E52910064E37D /* libGPUPower.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		077D6FA1216B0D1100BB0EC5 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				07FE0362216E54520064E37D /* GPUPower.h */,
+				07FE0363216E54950064E37D /* GPUPower */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		077D6FB0216B0EEB00BB0EC5 /* NodeChain */ = {
+			isa = PBXGroup;
+			children = (
+				077D7010216C562D00BB0EC5 /* TaskQueue.h */,
+				077D700F216C562D00BB0EC5 /* TaskQueue.cpp */,
+				077D6FB2216B0F0900BB0EC5 /* Node.h */,
+				077D6FB1216B0F0900BB0EC5 /* Node.cpp */,
+				077D6FC8216B187100BB0EC5 /* NodeData.h */,
+				077D6FC7216B187100BB0EC5 /* NodeData.cpp */,
+			);
+			path = NodeChain;
+			sourceTree = "<group>";
+		};
+		077D6FF2216B80FA00BB0EC5 /* RenderNode */ = {
+			isa = PBXGroup;
+			children = (
+				077D7044216C979800BB0EC5 /* GLRenderNode.h */,
+				077D7043216C979800BB0EC5 /* GLRenderNode.cpp */,
+				077D705E216C9E9200BB0EC5 /* GLRenderData.h */,
+				077D705D216C9E9200BB0EC5 /* GLRenderData.cpp */,
+				077D7062216CA02F00BB0EC5 /* GLCustomShaderRenderNode.h */,
+				077D7061216CA02F00BB0EC5 /* GLCustomShaderRenderNode.cpp */,
+			);
+			path = RenderNode;
+			sourceTree = "<group>";
+		};
+		077D6FF4216B835C00BB0EC5 /* OpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				077D6FF2216B80FA00BB0EC5 /* RenderNode */,
+				077D7040216C967D00BB0EC5 /* GLContext.h */,
+				07FE0370216F6F7B0064E37D /* GLObject.h */,
+				077D6FF6216B838E00BB0EC5 /* GLTexture.h */,
+				077D6FFA216B83FC00BB0EC5 /* GLFrameBuffer.h */,
+				077D6FFE216B844400BB0EC5 /* GLProgram.h */,
+				077D700C216B8B3E00BB0EC5 /* GLRenderBuffer.h */,
+				077D70A6216DDF1100BB0EC5 /* GLVertexArray.h */,
+				077D70AA216DE32D00BB0EC5 /* GLBuffer.h */,
+			);
+			path = OpenGL;
+			sourceTree = "<group>";
+		};
+		077D7008216B85DE00BB0EC5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				077D7009216B85DF00BB0EC5 /* OpenGLES.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		07FE0363216E54950064E37D /* GPUPower */ = {
+			isa = PBXGroup;
+			children = (
+				077D7067216CA34300BB0EC5 /* Error.h */,
+				07FE0364216F2D020064E37D /* Util.h */,
+				077D6FF4216B835C00BB0EC5 /* OpenGL */,
+				077D6FB0216B0EEB00BB0EC5 /* NodeChain */,
+			);
+			path = GPUPower;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		07FE0358216E52910064E37D /* GPUPower */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07FE035F216E52910064E37D /* Build configuration list for PBXNativeTarget "GPUPower" */;
+			buildPhases = (
+				07FE0355216E52910064E37D /* Sources */,
+				07FE0356216E52910064E37D /* Frameworks */,
+				07FE0357216E52910064E37D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GPUPower;
+			productName = GPUPower;
+			productReference = 07FE0359216E52910064E37D /* libGPUPower.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		077D6F96216B0D1100BB0EC5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = tencent;
+				TargetAttributes = {
+					07FE0358216E52910064E37D = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 077D6F99216B0D1100BB0EC5 /* Build configuration list for PBXProject "GPUPower" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 077D6F95216B0D1100BB0EC5;
+			productRefGroup = 077D6FA0216B0D1100BB0EC5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				07FE0358216E52910064E37D /* GPUPower */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		07FE0355216E52910064E37D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		077D6FA5216B0D1100BB0EC5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		077D6FA6216B0D1100BB0EC5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		07FE0360216E52910064E37D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZSGBMMMZ4T;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		07FE0361216E52910064E37D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZSGBMMMZ4T;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		077D6F99216B0D1100BB0EC5 /* Build configuration list for PBXProject "GPUPower" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				077D6FA5216B0D1100BB0EC5 /* Debug */,
+				077D6FA6216B0D1100BB0EC5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07FE035F216E52910064E37D /* Build configuration list for PBXNativeTarget "GPUPower" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07FE0360216E52910064E37D /* Debug */,
+				07FE0361216E52910064E37D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 077D6F96216B0D1100BB0EC5 /* Project object */;
+}
