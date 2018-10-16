@@ -10,29 +10,127 @@
 #include "NodeData.h"
 #include <vector>
 #include <map>
+#include "../Error.h"
 
 namespace NodeChain
 {
     using namespace std;
+    using namespace GPUPower;
     class Node:enable_shared_from_this<Node>
     {
     protected:
+        
         int restResponseCount;
         map<int,shared_ptr<Node>> inputNodes;
         map<int,shared_ptr<NodeResponse>> inputResponses;
         vector<shared_ptr<Node>> outputNodes;
-        map<int,shared_ptr<Node>>::iterator findInputNode(shared_ptr<Node> node);
+        map<int,shared_ptr<Node>>::iterator findInputNode(shared_ptr<Node> node)
+        {
+            auto it = find_if(inputNodes.begin(), inputNodes.end(), [&](const std::map<int,shared_ptr<Node>>::value_type item)
+                              {
+                                  return item.second == node;
+                              });
+            return it;
+        }
     public:
         bool holdInputResponsesAfterProcess;
-        virtual void addInput(shared_ptr<Node> node,int atIndex=-1);
-        virtual void removeInput(shared_ptr<Node> node);
-        virtual void addOutput(shared_ptr<Node> node,int toIndex=-1);
-        virtual void removeOutput(shared_ptr<Node> node);
         
-        virtual void sendRequest(shared_ptr<NodeRequest> request);
-        virtual void sendResponse(shared_ptr<NodeResponse> response);
         
-        virtual shared_ptr<NodeResponse> process();
-        virtual void checkAndProcess();
+        virtual void addInput(shared_ptr<Node> node,int atIndex)
+        {
+            inputNodes[atIndex] = node;
+            node->outputNodes.push_back(shared_from_this());
+        }
+        
+        virtual void removeInput(shared_ptr<Node> node)
+        {
+            auto it = findInputNode(node);
+            if (it != inputNodes.end())
+            {
+                inputNodes.erase(it);
+                node->outputNodes.erase(find(node->outputNodes.begin(), node->outputNodes.end(), node));
+            }
+            else
+            {
+                throw Error(GPUPowerError_InputNodeNotFound);
+            }
+        }
+        
+        virtual void removeAllInputs()
+        {
+            for (auto &pair: inputNodes)
+            {
+                auto node = pair.second;
+                node->outputNodes.erase(find(node->outputNodes.begin(), node->outputNodes.end(), node));
+            }
+            inputNodes.clear();
+        }
+        
+        virtual void addOutput(shared_ptr<Node> node,int toIndex)
+        {
+            node->addInput(shared_from_this(),toIndex);
+        }
+        
+        virtual void removeOutput(shared_ptr<Node> node)
+        {
+            node->removeInput(shared_from_this());
+        }
+        
+        virtual void removeAllOutputs()
+        {
+            for (auto &node: outputNodes)
+            {
+                node->inputNodes.erase(find(node->inputNodes.begin(), node->inputNodes.end(), node));
+            }
+            outputNodes.clear();
+        }
+        
+        virtual void sendRequest(shared_ptr<NodeRequest> request)
+        {
+            restResponseCount++;
+            if (inputNodes.size() == 0)
+            {
+                sendResponse(NULL);
+            }
+            else
+            {
+                auto nextRequest = shared_ptr<NodeRequest>(new NodeRequest);
+                nextRequest->previousRequest = request;
+                nextRequest->node = shared_from_this();
+                for(auto input : inputNodes)
+                {
+                    input.second->sendRequest(nextRequest);
+                }
+            }
+        }
+        
+        virtual void sendResponse(shared_ptr<NodeResponse> response)
+        {
+            restResponseCount--;
+            if (response.get())
+            {
+                auto it = findInputNode(response->node.lock());
+                inputResponses[it->first] = response;
+            }
+            checkAndProcess();
+        }
+        
+        virtual void checkAndProcess()
+        {
+            if (inputResponses.size() == inputNodes.size())
+            {
+                auto response = process();
+                for(auto output : outputNodes)
+                {
+                    response->node = shared_from_this();
+                    output->sendResponse(response);
+                }
+            }
+        }
+        
+        virtual shared_ptr<NodeResponse> process()
+        {
+            return shared_ptr<NodeResponse>(new NodeResponse);
+        }
     };
 };

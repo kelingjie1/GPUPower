@@ -6,11 +6,22 @@
 //  Copyright © 2018 tencent. All rights reserved.
 //
 
+#pragma once
 #include "../../NodeChain/Node.h"
+#include "../GLContext.h"
 namespace GPUPower
 {
-    class GLRenderNode:public NodeChain::Node
+    using namespace std;
+    using namespace NodeChain;
+    class GLRenderNode:public Node
     {
-        
+    protected:
+        weak_ptr<GLContext> context;
+        GLRenderNode();
+    public:
+        GLRenderNode(shared_ptr<GLContext> context)
+        {
+            this->context = context;
+        }
     };
 };

@@ -20,12 +20,16 @@ namespace GPUPower
     template<class T>
     class GLBuffer:public GLObject
     {
+        GLBuffer(shared_ptr<GLContext> context):GLObject(context),bufferID(0),size(0),count(0){}
     public:
         GLuint bufferID;
         GLsizei size;
         GLsizei count;
-        
-        GLBuffer(shared_ptr<GLContext> context):GLObject(context),bufferID(0),size(0),count(0){}
+
+        static shared_ptr<GLBuffer> create(shared_ptr<GLContext> context)
+        {
+            return shared_ptr<GLBuffer>(new GLBuffer(context));
+        }
         virtual void init()
         {
             GLObject::init();

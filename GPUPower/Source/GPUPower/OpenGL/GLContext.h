@@ -11,6 +11,7 @@
 #include <OpenGLES/ES3/glext.h>
 #include "../NodeChain/TaskQueue.h"
 #include "../Error.h"
+#include "../Platform/GPUPowerPlatform.h"
 
 namespace GPUPower
 {
@@ -24,13 +25,51 @@ namespace GPUPower
     
     template<class T>
     class GLBuffer;
+    class GLShareGroup
+    {
+    public:
+        
+    };
+    
+    class GLContext;
+    static thread_local shared_ptr<GLContext> currentContext;
     
     class GLContext:public enable_shared_from_this<GLContext>
     {
         NodeChain::TaskQueue taskQueue;
-        GLContext(){};
+        GLContext(GLShareGroup *sharegroup):sharegroup(sharegroup)
+        {
+            context = GPUPowerIOSBridge::createContext(sharegroup, this);
+        }
+        void init()
+        {
+            auto s = shared_from_this();
+            taskQueue.start([&]
+                            {
+                                currentContext = s;
+                            });
+        }
     public:
-        void *sharegroup;
+        shared_ptr<GLShareGroup> sharegroup;
+        void *context;
+        static shared_ptr<GLContext> current()
+        {
+            return currentContext;
+        }
+        
+        static shared_ptr<GLContext> create(GLShareGroup *sharegroup = nullptr)
+        {
+            auto context = shared_ptr<GLContext>(new GLContext(sharegroup));
+            context->init();
+            return context;
+        }
+        
+        
+        
+        ~GLContext()
+        {
+            GPUPowerIOSBridge::releaseContext(this);
+        }
 
         void check()
         {
@@ -54,35 +93,6 @@ namespace GPUPower
             {
                 taskQueue.addTask(func);
             }
-        }
-
-        shared_ptr<GLTexture> createTexture()
-        {
-            return make_shared<GLTexture>(shared_from_this());
-        }
-        shared_ptr<GLFrameBuffer> createFrameBuffer()
-        {
-            return make_shared<GLFrameBuffer>(shared_from_this());
-        }
-        shared_ptr<GLRenderBuffer> createRenderBuffer()
-        {
-            return make_shared<GLRenderBuffer>(shared_from_this());
-        }
-        shared_ptr<GLProgram> createProgram()
-        {
-            return make_shared<GLProgram>(shared_from_this());
-        }
-
-        template<class vboType,class eboType>
-        shared_ptr<GLVertexArray<vboType,eboType>> createVertextArray()
-        {
-            return make_shared<GLVertexArray<vboType,eboType>>(shared_from_this());
-        }
-
-        template<class T>
-        shared_ptr<GLBuffer<T>> createBuffer()
-        {
-            return make_shared<GLBuffer<T>>(shared_from_this());
         }
     };
 }

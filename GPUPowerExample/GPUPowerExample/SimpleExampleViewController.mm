@@ -9,12 +9,15 @@
 #import "SimpleExampleViewController.h"
 #import <GLKit/GLKit.h>
 #import <OpenGLES/ES3/gl.h>
-#import "GPUPower.h"
-
+#include "GPUPower.h"
+using namespace GPUPower;
 @interface SimpleExampleViewController ()<GLKViewDelegate>
-
+{
+    shared_ptr<GLRenderNode> node;
+    shared_ptr<GLContext> context;
+}
 @property (nonatomic) GLKView *glview;
-@property (nonatomic) EAGLContext *context;
+
 
 @end
 
@@ -23,16 +26,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    context = GLContext::create();
     self.glview = [[GLKView alloc] initWithFrame:CGRectMake(100, 100, 200, 200)];
     [self.view addSubview:self.glview];
     self.glview.delegate = self;
-    self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
-    self.glview.context = self.context;
+    self.glview.context = (__bridge EAGLContext*)context->context;
+    
+    shared_ptr<GLShaderRenderNode> node0(new GLShaderRenderNode(context));
+    node0->program = GLProgram::create(context);
+    node0->program->loadFromFile(GPUPower::passThroughVertexShader, GPUPower::passThroughFragmentShader);
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-    [EAGLContext setCurrentContext:self.context];
     glClearColor(1, 0, 0, 1);
     glClear(GL_COLOR_BUFFER_BIT);
 }

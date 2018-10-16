@@ -21,13 +21,18 @@ namespace GPUPower
     using namespace std;
     class GLProgram:public GLObject
     {
+        
+        string vertexShaderStr;
+        string fragmentShaderStr;
+        GLProgram(shared_ptr<GLContext> context): GLObject(context),programID(0),vertexShaderID(0),fragmentShaderID(0){}
+    public:
         GLuint programID;
         GLuint vertexShaderID;
         GLuint fragmentShaderID;
-        string vertexShaderStr;
-        string fragmentShaderStr;
-    public:
-        GLProgram(shared_ptr<GLContext> context): GLObject(context),programID(0),vertexShaderID(0),fragmentShaderID(0){}
+        static shared_ptr<GLProgram> create(shared_ptr<GLContext> context)
+        {
+            return shared_ptr<GLProgram>(new GLProgram(context));
+        }
         void loadFromFile(string vertexShaderFile, string fragmentShaderFile)
         {
             auto vs = Util::readFile(vertexShaderFile);

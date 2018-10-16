@@ -16,19 +16,26 @@ namespace GPUPower
     enum GPUPowerError
     {
         GPUPowerError_Unknow,
+        
+        GPUPowerError_InputNodeNotFound,
+        GPUPowerError_OutputNodeNotFound,
+        
+        GPUPowerError_ContextCreateFailed,
         GPUPowerError_ContextCheckFailed,
         GPUPowerError_VertexShaderCompileFailed,
         GPUPowerError_FragmentShaderCompileFailed,
         GPUPowerError_ProgramLinkFailed,
         GPUPowerError_MapBufferFailed,
         GPUPowerError_UnMapBufferFailed,
+        
+        
     };
     
     class Error:public exception
     {
     public:
         Error(GPUPowerError error,int internalCode,string detail=""):code(error),internalCode(0),detail(detail){}
-        Error(GPUPowerError error=GPUPowerError_Unknow,string detail=""):code(error),internalCode(internalCode),detail(detail){}
+        Error(GPUPowerError error=GPUPowerError_Unknow,string detail=""):code(error),internalCode(0),detail(detail){}
         GPUPowerError code;
         int internalCode;
         string detail;

@@ -18,11 +18,6 @@
 namespace GPUPower
 {
     using namespace std;
-    class GLBaseVertex;
-    template<class vboType=GLBaseVertex,class eboType = unsigned char>
-    class GLVertexArray;
-    
-    static shared_ptr<GLVertexArray<GLBaseVertex>> basicVertexArrayInstance;
     class GLBaseVertex
     {
     public:
@@ -38,16 +33,25 @@ namespace GPUPower
         GLint size;
         GLenum type;
     };
+    template<class vboType=GLBaseVertex,class eboType = unsigned char>
+    class GLVertexArray;
+    
+    static thread_local shared_ptr<GLVertexArray<GLBaseVertex>> basicVertexArrayInstance;
     
     template<class vboType,class eboType>
     class GLVertexArray:public GLObject
     {
-        GLuint vao;
+        
         GLenum mode;
         shared_ptr<GLBuffer<vboType>> vertexbuffer;
         shared_ptr<GLBuffer<eboType>> elementBuffer;
-    public:
         GLVertexArray(shared_ptr<GLContext> context):GLObject(context){}
+    public:
+        GLuint vao;
+        static shared_ptr<GLVertexArray<vboType,eboType>> create(shared_ptr<GLContext> context)
+        {
+            return shared_ptr<GLVertexArray<vboType,eboType>>(new GLVertexArray<vboType,eboType>(context));
+        }
         virtual void init()
         {
             GLObject::init();
@@ -143,9 +147,9 @@ namespace GPUPower
         {
             if (!basicVertexArrayInstance)
             {
-                basicVertexArrayInstance = make_shared<GLVertexArray<GLBaseVertex>>();
+                basicVertexArrayInstance = GLVertexArray<GLBaseVertex>::create(GLContext::current());
                 
-                auto buffer = make_shared<GLBuffer<GLBaseVertex>>();
+                auto buffer = GLBuffer<GLBaseVertex>::create(GLContext::current());
                 buffer->alloc(4);
                 auto vertex = buffer->lock();
                 vertex[0].x = -1.0f;
@@ -174,4 +178,6 @@ namespace GPUPower
             return basicVertexArrayInstance;
         }
     };
+    
+    
 }

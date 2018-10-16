@@ -6,6 +6,12 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		073102D92170D74D00ABA814 /* GPUPowerIOSBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 073102D82170D74D00ABA814 /* GPUPowerIOSBridge.mm */; };
+		073102F721747FE700ABA814 /* GPUPowerIOSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 073102F621747FE700ABA814 /* GPUPowerIOSTools.m */; };
+		073103082174BA3400ABA814 /* GPUPowerGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 073103072174BA3400ABA814 /* GPUPowerGLView.mm */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		07FE0357216E52910064E37D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -19,24 +25,26 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		077D6FB1216B0F0900BB0EC5 /* Node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
+		073102D72170D74D00ABA814 /* GPUPowerIOSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUPowerIOSBridge.h; sourceTree = "<group>"; };
+		073102D82170D74D00ABA814 /* GPUPowerIOSBridge.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GPUPowerIOSBridge.mm; sourceTree = "<group>"; };
+		073102F521747FE700ABA814 /* GPUPowerIOSTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUPowerIOSTools.h; sourceTree = "<group>"; };
+		073102F621747FE700ABA814 /* GPUPowerIOSTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPUPowerIOSTools.m; sourceTree = "<group>"; };
+		073102F8217482F700ABA814 /* GPUPowerPlatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUPowerPlatform.h; sourceTree = "<group>"; };
+		073103062174BA3400ABA814 /* GPUPowerGLView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUPowerGLView.h; sourceTree = "<group>"; };
+		073103072174BA3400ABA814 /* GPUPowerGLView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GPUPowerGLView.mm; sourceTree = "<group>"; };
 		077D6FB2216B0F0900BB0EC5 /* Node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
-		077D6FC7216B187100BB0EC5 /* NodeData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NodeData.cpp; sourceTree = "<group>"; };
 		077D6FC8216B187100BB0EC5 /* NodeData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NodeData.h; sourceTree = "<group>"; };
 		077D6FF6216B838E00BB0EC5 /* GLTexture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLTexture.h; sourceTree = "<group>"; };
 		077D6FFA216B83FC00BB0EC5 /* GLFrameBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLFrameBuffer.h; sourceTree = "<group>"; };
 		077D6FFE216B844400BB0EC5 /* GLProgram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLProgram.h; sourceTree = "<group>"; };
 		077D7009216B85DF00BB0EC5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		077D700C216B8B3E00BB0EC5 /* GLRenderBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLRenderBuffer.h; sourceTree = "<group>"; };
-		077D700F216C562D00BB0EC5 /* TaskQueue.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TaskQueue.cpp; sourceTree = "<group>"; };
 		077D7010216C562D00BB0EC5 /* TaskQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskQueue.h; sourceTree = "<group>"; };
 		077D7040216C967D00BB0EC5 /* GLContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLContext.h; sourceTree = "<group>"; };
-		077D7043216C979800BB0EC5 /* GLRenderNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLRenderNode.cpp; sourceTree = "<group>"; };
 		077D7044216C979800BB0EC5 /* GLRenderNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLRenderNode.h; sourceTree = "<group>"; };
 		077D705D216C9E9200BB0EC5 /* GLRenderData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLRenderData.cpp; sourceTree = "<group>"; };
 		077D705E216C9E9200BB0EC5 /* GLRenderData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLRenderData.h; sourceTree = "<group>"; };
-		077D7061216CA02F00BB0EC5 /* GLCustomShaderRenderNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLCustomShaderRenderNode.cpp; sourceTree = "<group>"; };
-		077D7062216CA02F00BB0EC5 /* GLCustomShaderRenderNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLCustomShaderRenderNode.h; sourceTree = "<group>"; };
+		077D7062216CA02F00BB0EC5 /* GLShaderRenderNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLShaderRenderNode.h; sourceTree = "<group>"; };
 		077D7067216CA34300BB0EC5 /* Error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Error.h; sourceTree = "<group>"; };
 		077D70A6216DDF1100BB0EC5 /* GLVertexArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLVertexArray.h; sourceTree = "<group>"; };
 		077D70AA216DE32D00BB0EC5 /* GLBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBuffer.h; sourceTree = "<group>"; };
@@ -57,6 +65,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		073102D42170CF7E00ABA814 /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				073102F8217482F700ABA814 /* GPUPowerPlatform.h */,
+				073102D52170CFA400ABA814 /* iOS */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
+		073102D52170CFA400ABA814 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				073102D72170D74D00ABA814 /* GPUPowerIOSBridge.h */,
+				073102D82170D74D00ABA814 /* GPUPowerIOSBridge.mm */,
+				073102F521747FE700ABA814 /* GPUPowerIOSTools.h */,
+				073102F621747FE700ABA814 /* GPUPowerIOSTools.m */,
+				073103062174BA3400ABA814 /* GPUPowerGLView.h */,
+				073103072174BA3400ABA814 /* GPUPowerGLView.mm */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
 		077D6F95216B0D1100BB0EC5 = {
 			isa = PBXGroup;
 			children = (
@@ -87,11 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				077D7010216C562D00BB0EC5 /* TaskQueue.h */,
-				077D700F216C562D00BB0EC5 /* TaskQueue.cpp */,
 				077D6FB2216B0F0900BB0EC5 /* Node.h */,
-				077D6FB1216B0F0900BB0EC5 /* Node.cpp */,
 				077D6FC8216B187100BB0EC5 /* NodeData.h */,
-				077D6FC7216B187100BB0EC5 /* NodeData.cpp */,
 			);
 			path = NodeChain;
 			sourceTree = "<group>";
@@ -100,11 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				077D7044216C979800BB0EC5 /* GLRenderNode.h */,
-				077D7043216C979800BB0EC5 /* GLRenderNode.cpp */,
 				077D705E216C9E9200BB0EC5 /* GLRenderData.h */,
 				077D705D216C9E9200BB0EC5 /* GLRenderData.cpp */,
-				077D7062216CA02F00BB0EC5 /* GLCustomShaderRenderNode.h */,
-				077D7061216CA02F00BB0EC5 /* GLCustomShaderRenderNode.cpp */,
+				077D7062216CA02F00BB0EC5 /* GLShaderRenderNode.h */,
 			);
 			path = RenderNode;
 			sourceTree = "<group>";
@@ -136,6 +161,7 @@
 		07FE0363216E54950064E37D /* GPUPower */ = {
 			isa = PBXGroup;
 			children = (
+				073102D42170CF7E00ABA814 /* Platform */,
 				077D7067216CA34300BB0EC5 /* Error.h */,
 				07FE0364216F2D020064E37D /* Util.h */,
 				077D6FF4216B835C00BB0EC5 /* OpenGL */,
@@ -200,6 +226,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				073102F721747FE700ABA814 /* GPUPowerIOSTools.m in Sources */,
+				073102D92170D74D00ABA814 /* GPUPowerIOSBridge.mm in Sources */,
+				073103082174BA3400ABA814 /* GPUPowerGLView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +358,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZSGBMMMZ4T;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					GLES_SILENCE_DEPRECATION,
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -342,6 +376,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZSGBMMMZ4T;
+				GCC_PREPROCESSOR_DEFINITIONS = GLES_SILENCE_DEPRECATION;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

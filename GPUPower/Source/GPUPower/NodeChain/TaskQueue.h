@@ -6,6 +6,8 @@
 //  Copyright © 2018 tencent. All rights reserved.
 //
 
+#pragma once
+
 #include <thread>
 #include <queue>
 #include <functional>
@@ -81,10 +83,40 @@ namespace NodeChain
         std::thread thread;
         thread_safe_queue<std::function<void()>> queue;
     public:
-        void start(std::function<void ()> startfunc = NULL);
-        void stop();
-        std::__thread_id getid();
-        void addTask(std::function<void()> func);
+        void start(std::function<void ()> startfunc = NULL)
+        {
+            isStoped = false;
+            thread = std::thread([=](){
+                if (startfunc)
+                {
+                    startfunc();
+                }
+                std::function<void ()> func;
+                while (!isStoped)
+                {
+                    queue.wait_and_pop(func);
+                    func();
+                }
+            });
+        }
+        void stop()
+        {
+            isStoped = true;
+        }
+        std::__thread_id getid()
+        {
+            return thread.get_id();
+        }
+        void addTask(std::function<void()> func)
+        {
+            queue.push(func);
+        }
+        ~TaskQueue()
+        {
+            stop();
+            thread.join();
+        }
+        
     };
 };
 

@@ -18,9 +18,13 @@ namespace GPUPower
     using namespace std;
     class GLRenderBuffer:public GLObject
     {
+        GLRenderBuffer(shared_ptr<GLContext> context):GLObject(context){}
     public:
         GLuint renderBufferID;
-        GLRenderBuffer(shared_ptr<GLContext> context):GLObject(context){}
+        static shared_ptr<GLRenderBuffer> create(shared_ptr<GLContext> context)
+        {
+            return shared_ptr<GLRenderBuffer>(new GLRenderBuffer(context));
+        }
         virtual void init()
         {
             GLObject::init();

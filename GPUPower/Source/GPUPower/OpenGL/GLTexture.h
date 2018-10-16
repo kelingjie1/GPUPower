@@ -16,10 +16,16 @@ namespace GPUPower
 {
     class GLTexture:public GLObject
     {
+    protected:
+        GLTexture(shared_ptr<GLContext> context):GLObject(context){}
     public:
         GLuint textureID;
-
-        GLTexture(shared_ptr<GLContext> context):GLObject(context){}
+        
+        static shared_ptr<GLTexture> create(shared_ptr<GLContext> context)
+        {
+            return shared_ptr<GLTexture>(new GLTexture(context));
+        }
+        
         
         virtual void init()
         {

@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		073103052174B99600ABA814 /* Shaders in Resources */ = {isa = PBXBuildFile; fileRef = 073102F32174790A00ABA814 /* Shaders */; };
 		077D6F81216B0CCA00BB0EC5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 077D6F80216B0CCA00BB0EC5 /* AppDelegate.m */; };
 		077D6F84216B0CCA00BB0EC5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077D6F83216B0CCA00BB0EC5 /* ViewController.m */; };
 		077D6F87216B0CCA00BB0EC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 077D6F85216B0CCA00BB0EC5 /* Main.storyboard */; };
 		077D6F89216B0CCC00BB0EC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 077D6F88216B0CCC00BB0EC5 /* Assets.xcassets */; };
 		077D6F8C216B0CCC00BB0EC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 077D6F8A216B0CCC00BB0EC5 /* LaunchScreen.storyboard */; };
 		077D6F8F216B0CCC00BB0EC5 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 077D6F8E216B0CCC00BB0EC5 /* main.mm */; };
-		077D7003216B850B00BB0EC5 /* GPUPower.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077D6FAF216B0D2900BB0EC5 /* GPUPower.framework */; };
-		077D7004216B850B00BB0EC5 /* GPUPower.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 077D6FAF216B0D2900BB0EC5 /* GPUPower.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		077D7003216B850B00BB0EC5 /* libGPUPower.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 077D6FAF216B0D2900BB0EC5 /* libGPUPower.a */; };
+		077D7004216B850B00BB0EC5 /* libGPUPower.a in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 077D6FAF216B0D2900BB0EC5 /* libGPUPower.a */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		077D7049216C99B200BB0EC5 /* SimpleExampleViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 077D7048216C99B200BB0EC5 /* SimpleExampleViewController.mm */; };
 		077D704C216C9B3800BB0EC5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077D704B216C9B3800BB0EC5 /* GLKit.framework */; };
 		077D7050216C9CBC00BB0EC5 /* TestNode0.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 077D704E216C9CBC00BB0EC5 /* TestNode0.cpp */; };
@@ -55,7 +56,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				077D7004216B850B00BB0EC5 /* GPUPower.framework in Embed Frameworks */,
+				077D7004216B850B00BB0EC5 /* libGPUPower.a in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +64,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		073102F32174790A00ABA814 /* Shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Shaders; sourceTree = "<group>"; };
 		077D6F7C216B0CCA00BB0EC5 /* GPUPowerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPUPowerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		077D6F7F216B0CCA00BB0EC5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		077D6F80216B0CCA00BB0EC5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -95,7 +97,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				077D704C216C9B3800BB0EC5 /* GLKit.framework in Frameworks */,
-				077D7003216B850B00BB0EC5 /* GPUPower.framework in Frameworks */,
+				077D7003216B850B00BB0EC5 /* libGPUPower.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +126,7 @@
 			children = (
 				077D704D216C9CA200BB0EC5 /* TestNode */,
 				077D6FAA216B0D2900BB0EC5 /* GPUPower.xcodeproj */,
+				073102F32174790A00ABA814 /* Shaders */,
 				077D6F7F216B0CCA00BB0EC5 /* AppDelegate.h */,
 				077D6F80216B0CCA00BB0EC5 /* AppDelegate.m */,
 				077D6F82216B0CCA00BB0EC5 /* ViewController.h */,
@@ -142,7 +145,7 @@
 		077D6FAB216B0D2900BB0EC5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				077D6FAF216B0D2900BB0EC5 /* GPUPower.framework */,
+				077D6FAF216B0D2900BB0EC5 /* libGPUPower.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -234,10 +237,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		077D6FAF216B0D2900BB0EC5 /* GPUPower.framework */ = {
+		077D6FAF216B0D2900BB0EC5 /* libGPUPower.a */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = GPUPower.framework;
+			fileType = archive.ar;
+			path = libGPUPower.a;
 			remoteRef = 077D6FAE216B0D2900BB0EC5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				077D6F8C216B0CCC00BB0EC5 /* LaunchScreen.storyboard in Resources */,
+				073103052174B99600ABA814 /* Shaders in Resources */,
 				077D6F89216B0CCC00BB0EC5 /* Assets.xcassets in Resources */,
 				077D6F87216B0CCA00BB0EC5 /* Main.storyboard in Resources */,
 			);

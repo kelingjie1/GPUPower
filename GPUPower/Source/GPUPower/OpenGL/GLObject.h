@@ -13,8 +13,9 @@ namespace GPUPower
     using namespace std;
     class GLObject
     {
-    protected:
+    public:
         weak_ptr<GLContext> context;
+    protected:
         GLObject(shared_ptr<GLContext> context):context(weak_ptr<GLContext>(context))
         {
 

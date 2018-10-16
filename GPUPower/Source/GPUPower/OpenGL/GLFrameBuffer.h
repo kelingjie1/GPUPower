@@ -18,9 +18,13 @@ namespace GPUPower
     using namespace std;
     class GLFrameBuffer:public GLObject
     {
-        GLuint frameBufferID;
-    public:
         GLFrameBuffer(shared_ptr<GLContext> context):GLObject(context){};
+    public:
+        GLuint frameBufferID;
+        static shared_ptr<GLFrameBuffer> create(shared_ptr<GLContext> context)
+        {
+            return shared_ptr<GLFrameBuffer>(new GLFrameBuffer(context));
+        }
         virtual void init()
         {
             glGenBuffers(1, &frameBufferID);
