@@ -17,16 +17,17 @@ namespace GPUPower
     {
     public:
         shared_ptr<GLTexture> texture;
+        virtual ~GLRenderData(){}
     };
     class GLRenderRequest:public NodeChain::NodeRequest,public GLRenderData
     {
     public:
-        
+        virtual ~GLRenderRequest(){}
     };
     
     class GLRenderResponse:public NodeChain::NodeResponse,public GLRenderData
     {
     public:
-        
+        virtual ~GLRenderResponse(){}
     };
 };

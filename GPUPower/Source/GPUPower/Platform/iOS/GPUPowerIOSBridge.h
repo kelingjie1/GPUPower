@@ -14,6 +14,7 @@ namespace GPUPower
     using namespace std;
     class GLShareGroup;
     class GLContext;
+    class GLTexture;
     class GPUPowerIOSBridge
     {
     public:

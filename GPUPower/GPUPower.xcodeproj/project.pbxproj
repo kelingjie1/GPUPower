@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		073102D92170D74D00ABA814 /* GPUPowerIOSBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 073102D82170D74D00ABA814 /* GPUPowerIOSBridge.mm */; };
-		073102F721747FE700ABA814 /* GPUPowerIOSTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 073102F621747FE700ABA814 /* GPUPowerIOSTools.m */; };
+		073102F721747FE700ABA814 /* GPUPowerIOSTools.mm in Sources */ = {isa = PBXBuildFile; fileRef = 073102F621747FE700ABA814 /* GPUPowerIOSTools.mm */; };
 		073103082174BA3400ABA814 /* GPUPowerGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 073103072174BA3400ABA814 /* GPUPowerGLView.mm */; };
 /* End PBXBuildFile section */
 
@@ -28,10 +28,11 @@
 		073102D72170D74D00ABA814 /* GPUPowerIOSBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUPowerIOSBridge.h; sourceTree = "<group>"; };
 		073102D82170D74D00ABA814 /* GPUPowerIOSBridge.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GPUPowerIOSBridge.mm; sourceTree = "<group>"; };
 		073102F521747FE700ABA814 /* GPUPowerIOSTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUPowerIOSTools.h; sourceTree = "<group>"; };
-		073102F621747FE700ABA814 /* GPUPowerIOSTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPUPowerIOSTools.m; sourceTree = "<group>"; };
+		073102F621747FE700ABA814 /* GPUPowerIOSTools.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GPUPowerIOSTools.mm; sourceTree = "<group>"; };
 		073102F8217482F700ABA814 /* GPUPowerPlatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUPowerPlatform.h; sourceTree = "<group>"; };
 		073103062174BA3400ABA814 /* GPUPowerGLView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUPowerGLView.h; sourceTree = "<group>"; };
 		073103072174BA3400ABA814 /* GPUPowerGLView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GPUPowerGLView.mm; sourceTree = "<group>"; };
+		0731032D2175CCED00ABA814 /* GLTextureNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLTextureNode.h; sourceTree = "<group>"; };
 		077D6FB2216B0F0900BB0EC5 /* Node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 		077D6FC8216B187100BB0EC5 /* NodeData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NodeData.h; sourceTree = "<group>"; };
 		077D6FF6216B838E00BB0EC5 /* GLTexture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLTexture.h; sourceTree = "<group>"; };
@@ -42,7 +43,6 @@
 		077D7010216C562D00BB0EC5 /* TaskQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskQueue.h; sourceTree = "<group>"; };
 		077D7040216C967D00BB0EC5 /* GLContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLContext.h; sourceTree = "<group>"; };
 		077D7044216C979800BB0EC5 /* GLRenderNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLRenderNode.h; sourceTree = "<group>"; };
-		077D705D216C9E9200BB0EC5 /* GLRenderData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLRenderData.cpp; sourceTree = "<group>"; };
 		077D705E216C9E9200BB0EC5 /* GLRenderData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLRenderData.h; sourceTree = "<group>"; };
 		077D7062216CA02F00BB0EC5 /* GLShaderRenderNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLShaderRenderNode.h; sourceTree = "<group>"; };
 		077D7067216CA34300BB0EC5 /* Error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Error.h; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 				073102D72170D74D00ABA814 /* GPUPowerIOSBridge.h */,
 				073102D82170D74D00ABA814 /* GPUPowerIOSBridge.mm */,
 				073102F521747FE700ABA814 /* GPUPowerIOSTools.h */,
-				073102F621747FE700ABA814 /* GPUPowerIOSTools.m */,
+				073102F621747FE700ABA814 /* GPUPowerIOSTools.mm */,
 				073103062174BA3400ABA814 /* GPUPowerGLView.h */,
 				073103072174BA3400ABA814 /* GPUPowerGLView.mm */,
 			);
@@ -128,8 +128,8 @@
 			children = (
 				077D7044216C979800BB0EC5 /* GLRenderNode.h */,
 				077D705E216C9E9200BB0EC5 /* GLRenderData.h */,
-				077D705D216C9E9200BB0EC5 /* GLRenderData.cpp */,
 				077D7062216CA02F00BB0EC5 /* GLShaderRenderNode.h */,
+				0731032D2175CCED00ABA814 /* GLTextureNode.h */,
 			);
 			path = RenderNode;
 			sourceTree = "<group>";
@@ -226,7 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				073102F721747FE700ABA814 /* GPUPowerIOSTools.m in Sources */,
+				073102F721747FE700ABA814 /* GPUPowerIOSTools.mm in Sources */,
 				073102D92170D74D00ABA814 /* GPUPowerIOSBridge.mm in Sources */,
 				073103082174BA3400ABA814 /* GPUPowerGLView.mm in Sources */,
 			);

@@ -102,6 +102,7 @@ namespace NodeChain
         void stop()
         {
             isStoped = true;
+            queue.push([]{});
         }
         std::__thread_id getid()
         {

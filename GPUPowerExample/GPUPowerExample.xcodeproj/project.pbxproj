@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		073103052174B99600ABA814 /* Shaders in Resources */ = {isa = PBXBuildFile; fileRef = 073102F32174790A00ABA814 /* Shaders */; };
+		0731032C2175C6DB00ABA814 /* Resource in Resources */ = {isa = PBXBuildFile; fileRef = 0731032B2175C6DB00ABA814 /* Resource */; };
 		077D6F81216B0CCA00BB0EC5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 077D6F80216B0CCA00BB0EC5 /* AppDelegate.m */; };
 		077D6F84216B0CCA00BB0EC5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077D6F83216B0CCA00BB0EC5 /* ViewController.m */; };
 		077D6F87216B0CCA00BB0EC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 077D6F85216B0CCA00BB0EC5 /* Main.storyboard */; };
@@ -64,7 +64,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		073102F32174790A00ABA814 /* Shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Shaders; sourceTree = "<group>"; };
+		0731032B2175C6DB00ABA814 /* Resource */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resource; sourceTree = "<group>"; };
 		077D6F7C216B0CCA00BB0EC5 /* GPUPowerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPUPowerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		077D6F7F216B0CCA00BB0EC5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		077D6F80216B0CCA00BB0EC5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 			children = (
 				077D704D216C9CA200BB0EC5 /* TestNode */,
 				077D6FAA216B0D2900BB0EC5 /* GPUPower.xcodeproj */,
-				073102F32174790A00ABA814 /* Shaders */,
+				0731032B2175C6DB00ABA814 /* Resource */,
 				077D6F7F216B0CCA00BB0EC5 /* AppDelegate.h */,
 				077D6F80216B0CCA00BB0EC5 /* AppDelegate.m */,
 				077D6F82216B0CCA00BB0EC5 /* ViewController.h */,
@@ -251,8 +251,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0731032C2175C6DB00ABA814 /* Resource in Resources */,
 				077D6F8C216B0CCC00BB0EC5 /* LaunchScreen.storyboard in Resources */,
-				073103052174B99600ABA814 /* Shaders in Resources */,
 				077D6F89216B0CCC00BB0EC5 /* Assets.xcassets in Resources */,
 				077D6F87216B0CCA00BB0EC5 /* Main.storyboard in Resources */,
 			);

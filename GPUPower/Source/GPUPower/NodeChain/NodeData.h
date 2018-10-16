@@ -17,16 +17,19 @@ namespace NodeChain
     {
     public:
         weak_ptr<Node> node;
+        virtual ~NodeData(){}
     };
     
     class NodeRequest:public NodeData
     {
     public:
         shared_ptr<NodeRequest> previousRequest;
+        virtual ~NodeRequest(){}
     };
     
     class NodeResponse:public NodeData
     {
     public:
+        virtual ~NodeResponse(){}
     };
 };

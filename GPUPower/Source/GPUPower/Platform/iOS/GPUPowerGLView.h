@@ -23,6 +23,7 @@ namespace GPUPower
 
 @interface GPUPowerGLView : GLKView
 
+@property (nonatomic) std::shared_ptr<GPUPower::GLContext> glcontext;
 @property (nonatomic,readonly) std::shared_ptr<GPUPower::GLPreviewNode> node;
 @property (nonatomic,readonly) BOOL async;
 

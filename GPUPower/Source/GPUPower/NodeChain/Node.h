@@ -80,7 +80,7 @@ namespace NodeChain
         {
             for (auto &node: outputNodes)
             {
-                node->inputNodes.erase(find(node->inputNodes.begin(), node->inputNodes.end(), node));
+                node->inputNodes.erase(node->findInputNode(shared_from_this()));
             }
             outputNodes.clear();
         }
@@ -131,6 +131,11 @@ namespace NodeChain
         virtual shared_ptr<NodeResponse> process()
         {
             return shared_ptr<NodeResponse>(new NodeResponse);
+        }
+        
+        map<int,shared_ptr<NodeResponse>> getInputResponses()
+        {
+            return inputResponses;
         }
     };
 };

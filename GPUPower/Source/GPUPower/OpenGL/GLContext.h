@@ -44,7 +44,7 @@ namespace GPUPower
         void init()
         {
             auto s = shared_from_this();
-            taskQueue.start([&]
+            taskQueue.start([=]
                             {
                                 currentContext = s;
                             });

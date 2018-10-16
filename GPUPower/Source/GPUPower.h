@@ -17,5 +17,6 @@
 #include "GPUPower/OpenGL/RenderNode/GLRenderNode.h"
 #include "GPUPower/OpenGL/RenderNode/GLRenderData.h"
 #include "GPUPower/OpenGL/RenderNode/GLShaderRenderNode.h"
+#include "GPUPower/OpenGL/RenderNode/GLTextureNode.h"
 
 

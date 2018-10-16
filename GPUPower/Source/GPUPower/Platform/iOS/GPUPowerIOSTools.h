@@ -7,10 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#include "../../OpenGL/GLTexture.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GPUPowerIOSTools : NSObject
+
++ (NSData*)dataWithCGImage:(CGImageRef)image;
+
 
 @end
 
