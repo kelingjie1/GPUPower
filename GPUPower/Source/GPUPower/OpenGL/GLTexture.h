@@ -46,6 +46,9 @@ namespace GPUPower
 
         void setImageData(const GLvoid *pixels, GLsizei width,GLsizei height,GLenum internalformat=GL_RGBA,GLenum format=GL_RGBA)
         {
+            auto c = context.lock();
+            c->check();
+            checkInit();
             glBindTexture(GL_TEXTURE_2D, textureID);
             if (pixels)
             {
@@ -61,6 +64,7 @@ namespace GPUPower
         {
             auto c = context.lock();
             c->check();
+            checkInit();
             glActiveTexture(GL_TEXTURE0+index);
             glBindTexture(GL_TEXTURE_2D, textureID);
         }

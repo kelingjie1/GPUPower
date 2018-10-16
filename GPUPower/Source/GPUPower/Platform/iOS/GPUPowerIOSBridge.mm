@@ -57,3 +57,15 @@ void GPUPowerIOSBridge::releaseContext(GLContext *context)
 {
     contexts.erase(context);
 }
+
+bool GPUPowerIOSBridge::isMainThread()
+{
+    return [NSThread isMainThread];
+}
+
+void GPUPowerIOSBridge::addMainThreadTask(function<void()> func)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        func();
+    });
+}

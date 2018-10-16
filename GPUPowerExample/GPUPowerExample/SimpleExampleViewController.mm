@@ -10,13 +10,14 @@
 #import <GLKit/GLKit.h>
 #import <OpenGLES/ES3/gl.h>
 #include "GPUPower.h"
+#include "GPUPower/Platform/iOS/GPUPowerIOSTools.h"
 using namespace GPUPower;
 @interface SimpleExampleViewController ()<GLKViewDelegate>
 {
     shared_ptr<GLRenderNode> node;
     shared_ptr<GLContext> context;
 }
-@property (nonatomic) GLKView *glview;
+@property (nonatomic) GPUPowerGLView *glview;
 
 
 @end
@@ -26,11 +27,18 @@ using namespace GPUPower;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    context = GLContext::create();
-    self.glview = [[GLKView alloc] initWithFrame:CGRectMake(100, 100, 200, 200)];
+    context = GLContext::createMainThreadContext();
+    self.glview = [[GPUPowerGLView alloc] initWithFrame:CGRectMake(100, 100, 200, 200)];
+    self.glview.glcontext = context;
     [self.view addSubview:self.glview];
-    self.glview.delegate = self;
-    self.glview.context = (__bridge EAGLContext*)context->context;
+    
+    UIImage *image = [UIImage imageNamed:@"image0.jpg"];
+    
+    shared_ptr<GLTextureNode> textureNode(new GLTextureNode(context));
+    auto texture = GLTexture::create(context);
+    [GPUPowerIOSTools setDataForGLTexture:texture image:image.CGImage];
+    textureNode->texture = texture;
+    [self.glview setInput:textureNode];
     
     shared_ptr<GLShaderRenderNode> node0(new GLShaderRenderNode(context));
     node0->program = GLProgram::create(context);

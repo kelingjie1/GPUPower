@@ -14,9 +14,10 @@ namespace GPUPower
     class GLObject
     {
     public:
+        bool ready;
         weak_ptr<GLContext> context;
     protected:
-        GLObject(shared_ptr<GLContext> context):context(weak_ptr<GLContext>(context))
+        GLObject(shared_ptr<GLContext> context):context(weak_ptr<GLContext>(context)),ready(false)
         {
 
         }
@@ -30,6 +31,14 @@ namespace GPUPower
         {
             auto c = context.lock();
             c->check();
+            ready = true;
+        }
+        virtual void checkInit()
+        {
+            if (!ready)
+            {
+                init();
+            }
         }
         virtual void cleanup()
         {

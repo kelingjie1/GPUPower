@@ -50,6 +50,7 @@ namespace GPUPower
                             });
         }
     public:
+        bool isMainThreadContext;
         shared_ptr<GLShareGroup> sharegroup;
         void *context;
         static shared_ptr<GLContext> current()
@@ -64,6 +65,14 @@ namespace GPUPower
             return context;
         }
         
+        static shared_ptr<GLContext> createMainThreadContext(GLShareGroup *sharegroup = nullptr)
+        {
+            auto context = shared_ptr<GLContext>(new GLContext(sharegroup));
+            context->init();
+            context->isMainThreadContext = true;
+            return context;
+        }
+        
         
         
         ~GLContext()
@@ -73,25 +82,62 @@ namespace GPUPower
 
         void check()
         {
-            if (this_thread::get_id() != taskQueue.getid())
+            bool failed = false;
+            if (isMainThreadContext)
+            {
+                if (!GPUPowerIOSBridge::isMainThread())
+                {
+                    failed = true;
+                }
+            }
+            else
+            {
+                if (this_thread::get_id() != taskQueue.getid())
+                {
+                    failed = true;
+                }
+            }
+            if (failed)
             {
                 throw Error(GPUPowerError_ContextCheckFailed);
             }
+            
         }
 
         void asyncTask(function<void()> func)
         {
-            taskQueue.addTask(func);
-        }
-        void checkAndAsyncTask(function<void()> func)
-        {
-            if (this_thread::get_id() == taskQueue.getid())
+            if (isMainThreadContext)
             {
-                func();
+                GPUPowerIOSBridge::addMainThreadTask(func);
             }
             else
             {
                 taskQueue.addTask(func);
+            }
+        }
+        void checkAndAsyncTask(function<void()> func)
+        {
+            if (isMainThreadContext)
+            {
+                if (GPUPowerIOSBridge::isMainThread())
+                {
+                    func();
+                }
+                else
+                {
+                    GPUPowerIOSBridge::addMainThreadTask(func);
+                }
+            }
+            else
+            {
+                if (this_thread::get_id() == taskQueue.getid())
+                {
+                    func();
+                }
+                else
+                {
+                    taskQueue.addTask(func);
+                }
             }
         }
     };

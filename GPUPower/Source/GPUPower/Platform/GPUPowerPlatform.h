@@ -7,3 +7,4 @@
 //
 
 #include "iOS/GPUPowerIOSBridge.h"
+#include "iOS/GPUPowerGLView.h"

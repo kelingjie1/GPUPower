@@ -13,9 +13,14 @@
 + (NSData *)dataWithCGImage:(CGImageRef)image
 {
     CFDataRef dataFromImageDataProvider = CGDataProviderCopyData(CGImageGetDataProvider(image));;
-    NSData *data = (__bridge NSData*)dataFromImageDataProvider;
-    CFRelease(dataFromImageDataProvider);
+    NSData *data = (__bridge_transfer NSData*)dataFromImageDataProvider;
     return data;
+}
+
++ (void)setDataForGLTexture:(std::shared_ptr<GPUPower::GLTexture>)texture image:(CGImageRef)image
+{
+    NSData *data = [self dataWithCGImage:image];
+    texture->setImageData(data.bytes, (GLsizei)CGImageGetWidth(image), (GLsizei)CGImageGetHeight(image));
 }
 
 @end

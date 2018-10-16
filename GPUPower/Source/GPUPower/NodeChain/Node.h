@@ -35,11 +35,11 @@ namespace NodeChain
     public:
         bool holdInputResponsesAfterProcess;
         
-        
         virtual void addInput(shared_ptr<Node> node,int atIndex)
         {
             inputNodes[atIndex] = node;
-            node->outputNodes.push_back(shared_from_this());
+            auto t = shared_from_this();
+            node->outputNodes.push_back(t);
         }
         
         virtual void removeInput(shared_ptr<Node> node)
@@ -111,6 +111,7 @@ namespace NodeChain
             {
                 auto it = findInputNode(response->node.lock());
                 inputResponses[it->first] = response;
+                
             }
             checkAndProcess();
         }

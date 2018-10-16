@@ -8,6 +8,7 @@
 
 #pragma once
 #include <memory>
+#include <functional>
 
 namespace GPUPower
 {
@@ -22,6 +23,8 @@ namespace GPUPower
         static void *createContext(GLShareGroup *sharegroup,GLContext *context);
         static void setContext(GLContext *context);
         static void releaseContext(GLContext *context);
+        static bool isMainThread();
+        static void addMainThreadTask(function<void()> func);
     };
 };
 

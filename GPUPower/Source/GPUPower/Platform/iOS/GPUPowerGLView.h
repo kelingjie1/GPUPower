@@ -6,6 +6,8 @@
 //  Copyright © 2018 tencent. All rights reserved.
 //
 
+#pragma once
+
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
 #include "../../OpenGL/RenderNode/GLRenderNode.h"
@@ -18,16 +20,19 @@ namespace GPUPower
     {
     public:
         __weak GPUPowerGLView *glView;
+        GLPreviewNode(shared_ptr<GLContext> context):GLRenderNode(context){}
+        virtual shared_ptr<NodeResponse> process();
+        virtual void sendRequest(shared_ptr<NodeRequest> request);
+        bool needUpdate;
     };
 }
 
 @interface GPUPowerGLView : GLKView
 
 @property (nonatomic) std::shared_ptr<GPUPower::GLContext> glcontext;
-@property (nonatomic,readonly) std::shared_ptr<GPUPower::GLPreviewNode> node;
 @property (nonatomic,readonly) BOOL async;
 
--(void)setInput:(std::shared_ptr<GPUPower::GLRenderNode>)node;
+- (void)setInput:(std::shared_ptr<GPUPower::GLRenderNode>)node;
 
 @end
 
