@@ -43,8 +43,8 @@ namespace GPUPower
     {
         
         GLenum mode;
-        shared_ptr<GLBuffer<vboType>> vertexbuffer;
-        shared_ptr<GLBuffer<eboType>> elementBuffer;
+        shared_ptr<GLVertexBuffer<vboType>> vertexbuffer;
+        shared_ptr<GLElementBuffer<eboType>> elementBuffer;
         GLVertexArray(shared_ptr<GLContext> context):GLObject(context){}
     public:
         GLuint vao;
@@ -62,18 +62,18 @@ namespace GPUPower
             }
         }
         
-        void setVertexBuffer(shared_ptr<GLBuffer<vboType>> vertexbuffer)
+        void setVertexBuffer(shared_ptr<GLVertexBuffer<vboType>> vertexbuffer)
         {
-            auto c = context.lock();
-            c->check();
+            this->vertexbuffer = vertexbuffer;
+            check();
             glBindVertexArray(vao);
             glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer->bufferID);
             glBindVertexArray(0);
         }
-        void setElementBuffer(shared_ptr<GLBuffer<vboType>> elementbuffer)
+        void setElementBuffer(shared_ptr<GLElementBuffer<vboType>> elementbuffer)
         {
-            auto c = context.lock();
-            c->check();
+            this->elementBuffer = elementbuffer;
+            check();
             glBindVertexArray(vao);
             glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementBuffer->bufferID);
             glBindVertexArray(0);
@@ -82,8 +82,7 @@ namespace GPUPower
         
         void setParams(vector<GLVertexArrayParams> params)
         {
-            auto c = context.lock();
-            c->check();
+            check();
             for (int i=0; i<params.size(); i++)
             {
                 glEnableVertexAttribArray(i);
@@ -103,8 +102,7 @@ namespace GPUPower
         
         void draw(GLsizei count=0)
         {
-            auto c = context.lock();
-            c->check();
+            check();
             glBindVertexArray(vao);
             if (elementBuffer)
             {
@@ -149,7 +147,7 @@ namespace GPUPower
             {
                 basicVertexArrayInstance = GLVertexArray<GLBaseVertex>::create(GLContext::current());
                 
-                auto buffer = GLBuffer<GLBaseVertex>::create(GLContext::current());
+                auto buffer = GLVertexBuffer<GLBaseVertex>::create(GLContext::current());
                 buffer->alloc(4);
                 auto vertex = buffer->lock();
                 vertex[0].x = -1.0f;

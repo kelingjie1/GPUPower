@@ -16,7 +16,7 @@ namespace NodeChain
 {
     using namespace std;
     using namespace GPUPower;
-    class Node:enable_shared_from_this<Node>
+    class Node:public enable_shared_from_this<Node>
     {
     protected:
         

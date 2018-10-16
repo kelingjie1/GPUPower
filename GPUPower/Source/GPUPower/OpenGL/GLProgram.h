@@ -133,6 +133,7 @@ namespace GPUPower
         
         void use()
         {
+            check();
             glUseProgram(programID);
         }
     };

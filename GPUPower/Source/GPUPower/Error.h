@@ -20,6 +20,8 @@ namespace GPUPower
         GPUPowerError_InputNodeNotFound,
         GPUPowerError_OutputNodeNotFound,
         
+        GPUPowerError_GLError,
+        
         GPUPowerError_ContextCreateFailed,
         GPUPowerError_ContextCheckFailed,
         GPUPowerError_VertexShaderCompileFailed,

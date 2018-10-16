@@ -33,7 +33,24 @@ namespace GPUPower
             c->check();
             ready = true;
         }
-        virtual void checkInit()
+        void check()
+        {
+            auto c = context.lock();
+            c->check();
+            checkInit();
+        }
+        
+        void checkError()
+        {
+            auto error = glGetError();
+            if (error)
+            {
+                //GL_NO_ERROR;
+                throw Error(GPUPowerError_GLError,error);
+            }
+        }
+        
+        void checkInit()
         {
             if (!ready)
             {
