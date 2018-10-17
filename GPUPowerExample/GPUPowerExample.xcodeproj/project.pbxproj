@@ -23,6 +23,7 @@
 		077D705A216C9D1C00BB0EC5 /* TestNode1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 077D7052216C9D1C00BB0EC5 /* TestNode1.cpp */; };
 		077D705B216C9D1C00BB0EC5 /* TestNode3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 077D7056216C9D1C00BB0EC5 /* TestNode3.cpp */; };
 		077D705C216C9D1C00BB0EC5 /* TestNode2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 077D7058216C9D1C00BB0EC5 /* TestNode2.cpp */; };
+		07BDB74121776934005543E1 /* MutithreadExampleViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07BDB73F21776934005543E1 /* MutithreadExampleViewController.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,9 @@
 		077D7056216C9D1C00BB0EC5 /* TestNode3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestNode3.cpp; sourceTree = "<group>"; };
 		077D7057216C9D1C00BB0EC5 /* TestNode4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNode4.h; sourceTree = "<group>"; };
 		077D7058216C9D1C00BB0EC5 /* TestNode2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestNode2.cpp; sourceTree = "<group>"; };
+		07BDB73E21776934005543E1 /* MutithreadExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutithreadExampleViewController.h; sourceTree = "<group>"; };
+		07BDB73F21776934005543E1 /* MutithreadExampleViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MutithreadExampleViewController.mm; sourceTree = "<group>"; };
+		07BDB74021776934005543E1 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,9 @@
 				077D6F8E216B0CCC00BB0EC5 /* main.mm */,
 				077D7047216C99B200BB0EC5 /* SimpleExampleViewController.h */,
 				077D7048216C99B200BB0EC5 /* SimpleExampleViewController.mm */,
+				07BDB73E21776934005543E1 /* MutithreadExampleViewController.h */,
+				07BDB73F21776934005543E1 /* MutithreadExampleViewController.mm */,
+				07BDB74021776934005543E1 /* ViewController.h */,
 			);
 			path = GPUPowerExample;
 			sourceTree = "<group>";
@@ -265,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07BDB74121776934005543E1 /* MutithreadExampleViewController.mm in Sources */,
 				077D7059216C9D1C00BB0EC5 /* TestNode4.cpp in Sources */,
 				077D6F84216B0CCA00BB0EC5 /* ViewController.m in Sources */,
 				077D7050216C9CBC00BB0EC5 /* TestNode0.cpp in Sources */,

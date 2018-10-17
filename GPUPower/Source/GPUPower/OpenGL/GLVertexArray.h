@@ -38,12 +38,16 @@ namespace GPUPower
     template<class vboType=GLBaseVertex,class eboType = unsigned char>
     class GLVertexArray;
     
-    static thread_local shared_ptr<GLVertexArray<GLBaseVertex>> basicVertexArrayInstance;
+    
     
     template<class vboType,class eboType>
     class GLVertexArray:public GLObject
     {
-        
+        static shared_ptr<GLVertexArray<GLBaseVertex>> &basicVertexArrayInstance()
+        {
+            static thread_local shared_ptr<GLVertexArray<GLBaseVertex>> instance;
+            return instance;
+        }
         GLenum mode;
         shared_ptr<GLVertexBuffer<vboType>> vertexbuffer;
         shared_ptr<GLElementBuffer<eboType>> elementBuffer;
@@ -153,9 +157,9 @@ namespace GPUPower
         
         static shared_ptr<GLVertexArray<GLBaseVertex>> basicVertexArray()
         {
-            if (!basicVertexArrayInstance)
+            if (!basicVertexArrayInstance())
             {
-                basicVertexArrayInstance = GLVertexArray<GLBaseVertex>::create(GLContext::current());
+                basicVertexArrayInstance() = GLVertexArray<GLBaseVertex>::create(GLContext::current());
                 
                 auto buffer = GLVertexBuffer<GLBaseVertex>::create(GLContext::current());
                 buffer->alloc(4);
@@ -180,17 +184,17 @@ namespace GPUPower
                 vertex[3].u = 1.0f;
                 vertex[3].v = 1.0f;
                 buffer->unlock();
-                basicVertexArrayInstance->setVertexBuffer(buffer);
+                basicVertexArrayInstance()->setVertexBuffer(buffer);
                 
                 vector<GLVertexArrayParams> params;
                 params.push_back(GLVertexArrayParams(0,2));
                 params.push_back(GLVertexArrayParams(1,2));
-                basicVertexArrayInstance->setParams(params);
+                basicVertexArrayInstance()->setParams(params);
                 
-                basicVertexArrayInstance->setDrawMode(GL_TRIANGLE_STRIP);
+                basicVertexArrayInstance()->setDrawMode(GL_TRIANGLE_STRIP);
                 
             }
-            return basicVertexArrayInstance;
+            return basicVertexArrayInstance();
         }
     };
     

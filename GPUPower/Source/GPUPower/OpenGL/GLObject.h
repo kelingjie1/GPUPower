@@ -33,10 +33,10 @@ namespace GPUPower
             c->check();
             ready = true;
         }
-        void check()
+        void check(bool share=false)
         {
             auto c = context.lock();
-            c->check();
+            c->check(share);
             checkInit();
         }
         

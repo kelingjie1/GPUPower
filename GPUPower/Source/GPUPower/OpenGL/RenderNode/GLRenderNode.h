@@ -16,9 +16,9 @@ namespace GPUPower
     class GLRenderNode:public Node
     {
     protected:
-        weak_ptr<GLContext> context;
         GLRenderNode();
     public:
+        weak_ptr<GLContext> context;
         GLRenderNode(shared_ptr<GLContext> context)
         {
             this->context = context;

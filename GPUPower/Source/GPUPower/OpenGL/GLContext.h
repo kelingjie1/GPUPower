@@ -28,18 +28,27 @@ namespace GPUPower
     class GLShareGroup
     {
     public:
-        
+        static shared_ptr<GLShareGroup> create()
+        {
+            return GPUPowerIOSBridge::createShareGroup();
+        }
     };
     
     class GLContext;
-    thread_local shared_ptr<GLContext> currentContext;
     
     class GLContext:public enable_shared_from_this<GLContext>
     {
         NodeChain::TaskQueue taskQueue;
-        GLContext(GLShareGroup *sharegroup):sharegroup(sharegroup),isMainThreadContext(false)
+        
+        static shared_ptr<GLContext> &currentContext()
         {
-            context = GPUPowerIOSBridge::createContext(sharegroup, this);
+            static thread_local shared_ptr<GLContext> context;
+            return context;
+        };
+        
+        GLContext(shared_ptr<GLShareGroup> sharegroup):sharegroup(sharegroup),isMainThreadContext(false)
+        {
+            context = GPUPowerIOSBridge::createContext(sharegroup.get(), this);
         }
         void init()
         {
@@ -47,14 +56,14 @@ namespace GPUPower
             if (isMainThreadContext)
             {
                 GPUPowerIOSBridge::setContext(this);
-                currentContext = s;
+                currentContext() = s;
             }
             else
             {
                 taskQueue.start([=]
                                 {
                                     GPUPowerIOSBridge::setContext(this);
-                                    currentContext = s;
+                                    currentContext() = s;
                                 });
             }
             
@@ -65,17 +74,17 @@ namespace GPUPower
         void *context;
         static shared_ptr<GLContext> current()
         {
-            return currentContext;
+            return currentContext();
         }
         
-        static shared_ptr<GLContext> create(GLShareGroup *sharegroup = nullptr)
+        static shared_ptr<GLContext> create(shared_ptr<GLShareGroup> sharegroup = nullptr)
         {
             auto context = shared_ptr<GLContext>(new GLContext(sharegroup));
             context->init();
             return context;
         }
         
-        static shared_ptr<GLContext> createMainThreadContext(GLShareGroup *sharegroup = nullptr)
+        static shared_ptr<GLContext> createMainThreadContext(shared_ptr<GLShareGroup> sharegroup = nullptr)
         {
             auto context = shared_ptr<GLContext>(new GLContext(sharegroup));
             context->isMainThreadContext = true;
@@ -90,7 +99,7 @@ namespace GPUPower
             GPUPowerIOSBridge::releaseContext(this);
         }
 
-        void check()
+        void check(bool share=false)
         {
             bool failed = false;
             if (isMainThreadContext)
@@ -104,7 +113,14 @@ namespace GPUPower
             {
                 if (this_thread::get_id() != taskQueue.getid())
                 {
-                    failed = true;
+                    if(share&&sharegroup&&GLContext::current()->sharegroup == sharegroup)
+                    {
+                        //sharegroup
+                    }
+                    else
+                    {
+                        failed = true;
+                    }
                 }
             }
             if (failed)

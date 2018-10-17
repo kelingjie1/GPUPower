@@ -89,6 +89,23 @@ using namespace GPUPower;
 {
     self.node->removeAllInputs();
     self.node->addInput(node, 0);
+    auto a = node->context.lock();
+    auto b = self.node->context.lock();
+    if (a == b)
+    {
+        _async = NO;
+    }
+    else
+    {
+        if (a->sharegroup&&a->sharegroup == b->sharegroup)
+        {
+            _async = YES;
+        }
+        else
+        {
+            NSAssert(NO, @"sharegroup is NULL or not equal");
+        }
+    }
 }
 
 @end
