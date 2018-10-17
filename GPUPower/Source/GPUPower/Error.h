@@ -21,6 +21,8 @@ namespace GPUPower
         GPUPowerError_OutputNodeNotFound,
         
         GPUPowerError_GLError,
+        GPUPowerError_InvalidType,
+        GPUPowerError_InvalidData,
         
         GPUPowerError_ContextCreateFailed,
         GPUPowerError_ContextCheckFailed,

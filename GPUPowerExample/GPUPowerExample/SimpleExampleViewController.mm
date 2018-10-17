@@ -37,7 +37,7 @@ using namespace GPUPower;
     shared_ptr<GLTextureNode> textureNode(new GLTextureNode(context));
     auto texture = GLTexture::create(context);
     [GPUPowerIOSTools setDataForGLTexture:texture image:image.CGImage];
-    textureNode->texture = texture;
+    textureNode->setTexture(texture);
     [self.glview setInput:textureNode];
     
     shared_ptr<GLShaderRenderNode> node0(new GLShaderRenderNode(context));

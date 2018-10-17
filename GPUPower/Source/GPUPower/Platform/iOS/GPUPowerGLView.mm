@@ -49,8 +49,10 @@ using namespace GPUPower;
         if (renderRsp&&renderRsp->texture)
         {
             renderRsp->texture->activeAndBind(0);
+            program->setUniform("tex", 0);
         }
         GLVertexArray<>::basicVertexArray()->draw();
+        NSLog(@"render");
     }
     else
     {

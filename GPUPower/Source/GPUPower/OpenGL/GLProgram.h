@@ -136,5 +136,184 @@ namespace GPUPower
             check();
             glUseProgram(programID);
         }
+        
+        void setUniform(GLuint location,GLfloat x)
+        {
+            check();
+            glUniform1f(location, x);
+        }
+        
+        void setUniform(GLuint location,GLfloat x,GLfloat y)
+        {
+            check();
+            glUniform2f(location, x, y);
+        }
+        
+        void setUniform(GLuint location,GLfloat x,GLfloat y,GLfloat z)
+        {
+            check();
+            glUniform3f(location, x, y, z);
+        }
+        
+        void setUniform(GLuint location,GLfloat x,GLfloat y,GLfloat z,GLfloat w)
+        {
+            check();
+            glUniform4f(location, x, y, z, w);
+        }
+        
+        void setUniform(GLuint location,GLint x)
+        {
+            check();
+            glUniform1i(location, x);
+        }
+        
+        void setUniform(GLuint location,GLint x,GLint y)
+        {
+            check();
+            glUniform2i(location, x, y);
+        }
+        
+        void setUniform(GLuint location,GLint x,GLint y,GLint z)
+        {
+            check();
+            glUniform3i(location, x, y, z);
+        }
+        
+        void setUniform(GLuint location,GLint x,GLint y,GLint z,GLint w)
+        {
+            check();
+            glUniform4i(location, x, y, z, w);
+        }
+        
+        void setUniform(GLuint location,GLuint x)
+        {
+            check();
+            glUniform1ui(location, x);
+        }
+        
+        void setUniform(GLuint location,GLuint x,GLuint y)
+        {
+            check();
+            glUniform2ui(location, x, y);
+        }
+        
+        void setUniform(GLuint location,GLuint x,GLuint y,GLuint z)
+        {
+            check();
+            glUniform3ui(location, x, y, z);
+        }
+        
+        void setUniform(GLuint location,GLuint x,GLuint y,GLuint z,GLuint w)
+        {
+            check();
+            glUniform4ui(location, x, y, z, w);
+        }
+        
+        void setUniform(GLuint location,vector<GLfloat> matrix)
+        {
+            check();
+            if (matrix.size()==4)
+            {
+                glUniformMatrix2fv(location, (GLsizei)matrix.size(), false, matrix.data());
+            }
+            else if (matrix.size()==9)
+            {
+                glUniformMatrix3fv(location, (GLsizei)matrix.size(), false, matrix.data());
+            }
+            else if (matrix.size()==16)
+            {
+                glUniformMatrix4fv(location, (GLsizei)matrix.size(), false, matrix.data());
+            }
+            else
+            {
+                throw Error(GPUPowerError_InvalidData);
+            }
+        }
+        
+        GLuint getUniformLocation(string name)
+        {
+            check();
+            auto location = glGetUniformLocation(programID, name.c_str());
+            checkError();
+            return location;
+        }
+        
+        void setUniform(string name,GLfloat x)
+        {
+            auto location = getUniformLocation(name);
+            setUniform(location, x);
+        }
+        
+        void setUniform(string name,GLfloat x,GLfloat y)
+        {
+            auto location = getUniformLocation(name);
+            setUniform(location, x,y);
+        }
+        
+        void setUniform(string name,GLfloat x,GLfloat y,GLfloat z)
+        {
+            auto location = getUniformLocation(name);
+            setUniform(location, x,y,z);
+        }
+        
+        void setUniform(string name,GLfloat x,GLfloat y,GLfloat z,GLfloat w)
+        {
+            auto location = getUniformLocation(name);
+            setUniform(location, x,y,z,w);
+        }
+        
+        void setUniform(string name,GLint x)
+        {
+            auto location = getUniformLocation(name);
+            setUniform(location, x);
+        }
+        
+        void setUniform(string name,GLint x,GLint y)
+        {
+            auto location = getUniformLocation(name);
+            setUniform(location, x,y);
+        }
+        
+        void setUniform(string name,GLint x,GLint y,GLint z)
+        {
+            auto location = getUniformLocation(name);
+            setUniform(location, x,y,z);
+        }
+        
+        void setUniform(string name,GLint x,GLint y,GLint z,GLint w)
+        {
+            auto location = getUniformLocation(name);
+            setUniform(location, x,y,z,w);
+        }
+        
+        void setUniform(string name,GLuint x)
+        {
+            auto location = getUniformLocation(name);
+            setUniform(location, x);
+        }
+        
+        void setUniform(string name,GLuint x,GLuint y)
+        {
+            auto location = getUniformLocation(name);
+            setUniform(location, x,y);
+        }
+        
+        void setUniform(string name,GLuint x,GLuint y,GLuint z)
+        {
+            auto location = getUniformLocation(name);
+            setUniform(location, x,y,z);
+        }
+        
+        void setUniform(string name,GLuint x,GLuint y,GLuint z,GLuint w)
+        {
+            auto location = getUniformLocation(name);
+            setUniform(location, x,y,z,w);
+        }
+        
+        void setUniform(string name,vector<GLfloat> matrix)
+        {
+            auto location = getUniformLocation(name);
+            setUniform(location, matrix);
+        }
     };
 }

@@ -30,8 +30,10 @@ namespace GPUPower
     {
     public:
         GLuint index;
-        GLint size;
-        GLenum type;
+        GLint size;//1、2、3、4
+        GLenum type;//GL_FLOAT/GL_INT
+        GLboolean normalized;
+        GLVertexArrayParams(GLuint index,GLint size=1,GLenum type=GL_FLOAT,GLboolean normalized=false):index(index),size(size),type(type),normalized(normalized){}
     };
     template<class vboType=GLBaseVertex,class eboType = unsigned char>
     class GLVertexArray;
@@ -83,16 +85,24 @@ namespace GPUPower
         void setParams(vector<GLVertexArrayParams> params)
         {
             check();
+            glBindVertexArray(vao);
+            GLuint offset = 0;
             for (int i=0; i<params.size(); i++)
             {
                 glEnableVertexAttribArray(i);
+                auto param = params[i];
+                GLsizei stride = sizeof(vboType);
+                GLvoid *of = reinterpret_cast<GLvoid*>(offset);
+                glVertexAttribPointer(param.index, param.size, param.type, param.normalized, stride, of);
+                offset += Util::sizeOfGLType(param.type)*param.size;
             }
             GLint maxAttributes = 0;
             glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &maxAttributes);
-            for (int i=params.size(); i<maxAttributes; i++)
+            for (GLuint i=(GLuint)params.size(); i<maxAttributes; i++)
             {
                 glDisableVertexAttribArray(i);
             }
+            glBindVertexArray(0);
         }
         
         void setDrawMode(GLenum mode)
@@ -170,8 +180,15 @@ namespace GPUPower
                 vertex[3].u = 1.0f;
                 vertex[3].v = 1.0f;
                 buffer->unlock();
-                basicVertexArrayInstance->setDrawMode(GL_TRIANGLE_FAN);
                 basicVertexArrayInstance->setVertexBuffer(buffer);
+                
+                vector<GLVertexArrayParams> params;
+                params.push_back(GLVertexArrayParams(0,2));
+                params.push_back(GLVertexArrayParams(1,2));
+                basicVertexArrayInstance->setParams(params);
+                
+                basicVertexArrayInstance->setDrawMode(GL_TRIANGLE_FAN);
+                
             }
             return basicVertexArrayInstance;
         }

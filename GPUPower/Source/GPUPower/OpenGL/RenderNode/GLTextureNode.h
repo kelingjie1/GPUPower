@@ -21,11 +21,18 @@ namespace GPUPower
     {
         shared_ptr<GLRenderResponse> response;
     public:
-        shared_ptr<GLTexture> texture;
+        
         GLTextureNode(shared_ptr<GLContext> context):GLRenderNode(context)
         {
             response = shared_ptr<GLRenderResponse>(new GLRenderResponse);
+        }
+        void setTexture(shared_ptr<GLTexture> texture)
+        {
             response->texture = texture;
+        }
+        shared_ptr<GLTexture> getTexture()
+        {
+            return response->texture;
         }
         virtual shared_ptr<NodeResponse> process()
         {
