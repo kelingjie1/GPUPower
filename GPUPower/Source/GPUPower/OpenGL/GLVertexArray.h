@@ -187,7 +187,7 @@ namespace GPUPower
                 params.push_back(GLVertexArrayParams(1,2));
                 basicVertexArrayInstance->setParams(params);
                 
-                basicVertexArrayInstance->setDrawMode(GL_TRIANGLE_FAN);
+                basicVertexArrayInstance->setDrawMode(GL_TRIANGLE_STRIP);
                 
             }
             return basicVertexArrayInstance;

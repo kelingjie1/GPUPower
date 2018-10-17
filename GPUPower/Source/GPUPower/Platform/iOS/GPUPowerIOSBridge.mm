@@ -50,7 +50,7 @@ void *GPUPowerIOSBridge::createContext(GLShareGroup *sharegroup,GLContext *conte
 
 void GPUPowerIOSBridge::setContext(GLContext *context)
 {
-    [EAGLContext setCurrentContext:(__bridge EAGLContext*)context];
+    [EAGLContext setCurrentContext:(__bridge EAGLContext*)context->context];
 }
 
 void GPUPowerIOSBridge::releaseContext(GLContext *context)

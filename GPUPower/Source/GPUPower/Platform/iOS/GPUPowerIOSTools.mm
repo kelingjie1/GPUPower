@@ -20,7 +20,7 @@
 + (void)setDataForGLTexture:(std::shared_ptr<GPUPower::GLTexture>)texture image:(CGImageRef)image
 {
     NSData *data = [self dataWithCGImage:image];
-    texture->setImageData(data.bytes, (GLsizei)CGImageGetWidth(image), (GLsizei)CGImageGetHeight(image));
+    texture->setImageData(data.bytes, (GLsizei)CGImageGetWidth(image), (GLsizei)CGImageGetHeight(image), GL_RGBA, GL_BGRA);
 }
 
 @end

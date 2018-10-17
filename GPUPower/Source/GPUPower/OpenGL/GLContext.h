@@ -46,12 +46,14 @@ namespace GPUPower
             auto s = shared_from_this();
             if (isMainThreadContext)
             {
+                GPUPowerIOSBridge::setContext(this);
                 currentContext = s;
             }
             else
             {
                 taskQueue.start([=]
                                 {
+                                    GPUPowerIOSBridge::setContext(this);
                                     currentContext = s;
                                 });
             }

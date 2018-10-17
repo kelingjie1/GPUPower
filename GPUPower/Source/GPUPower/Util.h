@@ -26,6 +26,7 @@ namespace GPUPower
              out vec2 uv;
              void main()
              {
+                 gl_Position = vec4(position,0.,1.);
                  uv = coord;
              }
     );
@@ -37,8 +38,7 @@ namespace GPUPower
              in vec2 uv;
              void main()
              {
-                 //color = texture(tex, uv);
-                 color = vec4(0.,0.,1.,1.);
+                 color = texture(tex, uv);
              }
              );
     class Util

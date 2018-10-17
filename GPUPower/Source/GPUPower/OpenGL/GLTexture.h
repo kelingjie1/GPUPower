@@ -44,12 +44,11 @@ namespace GPUPower
             
         }
 
-        void setImageData(const GLvoid *pixels, GLsizei width,GLsizei height,GLenum internalformat=GL_RGBA,GLenum format=GL_RGBA)
+        void setImageData(const GLvoid *pixels, GLsizei width,GLsizei height,GLenum internalformat=GL_RGBA,GLenum format=GL_BGRA)
         {
-            auto c = context.lock();
-            c->check();
-            checkInit();
+            check();
             glBindTexture(GL_TEXTURE_2D, textureID);
+            checkError();
             if (pixels)
             {
                 glTexImage2D(GL_TEXTURE_2D, 0, internalformat, width, height, 0, format, GL_UNSIGNED_BYTE, pixels);
@@ -58,6 +57,9 @@ namespace GPUPower
             {
                 glTexStorage2D(GL_TEXTURE_2D, 0, internalformat, width, height);
             }
+            checkError();
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         }
 
         void activeAndBind(GLuint index)
@@ -66,7 +68,9 @@ namespace GPUPower
             c->check();
             checkInit();
             glActiveTexture(GL_TEXTURE0+index);
+            checkError();
             glBindTexture(GL_TEXTURE_2D, textureID);
+            checkError();
         }
     };
 };

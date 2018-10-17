@@ -32,7 +32,8 @@ using namespace GPUPower;
     self.glview.glcontext = context;
     [self.view addSubview:self.glview];
     
-    UIImage *image = [UIImage imageNamed:@"image0.jpg"];
+    NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Resource/image0.png"];
+    UIImage *image = [UIImage imageWithContentsOfFile:path];
     
     shared_ptr<GLTextureNode> textureNode(new GLTextureNode(context));
     auto texture = GLTexture::create(context);
@@ -43,6 +44,7 @@ using namespace GPUPower;
     shared_ptr<GLShaderRenderNode> node0(new GLShaderRenderNode(context));
     node0->program = GLProgram::create(context);
     node0->program->loadFromFile(GPUPower::passThroughVertexShader, GPUPower::passThroughFragmentShader);
+    
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
