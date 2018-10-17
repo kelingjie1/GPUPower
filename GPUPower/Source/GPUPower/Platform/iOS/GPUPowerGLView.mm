@@ -108,6 +108,11 @@ using namespace GPUPower;
     }
 }
 
+- (void)dealloc
+{
+    
+}
+
 @end
 
 

@@ -12,6 +12,7 @@
 #include "../NodeChain/TaskQueue.h"
 #include "../Error.h"
 #include "../Platform/GPUPowerPlatform.h"
+#include <iostream>
 
 namespace GPUPower
 {
@@ -40,15 +41,16 @@ namespace GPUPower
     {
         NodeChain::TaskQueue taskQueue;
         
-        static shared_ptr<GLContext> &currentContext()
+        static weak_ptr<GLContext> &currentContext()
         {
-            static thread_local shared_ptr<GLContext> context;
+            static thread_local weak_ptr<GLContext> context;
             return context;
         };
         
         GLContext(shared_ptr<GLShareGroup> sharegroup):sharegroup(sharegroup),isMainThreadContext(false)
         {
             context = GPUPowerIOSBridge::createContext(sharegroup.get(), this);
+            cout<<"GLContext("<<this<<")"<<endl;
         }
         void init()
         {
@@ -74,7 +76,7 @@ namespace GPUPower
         void *context;
         static shared_ptr<GLContext> current()
         {
-            return currentContext();
+            return currentContext().lock();
         }
         
         static shared_ptr<GLContext> create(shared_ptr<GLShareGroup> sharegroup = nullptr)
@@ -97,6 +99,7 @@ namespace GPUPower
         ~GLContext()
         {
             GPUPowerIOSBridge::releaseContext(this);
+            cout<<"~GLContext("<<this<<")"<<endl;
         }
 
         void check(bool share=false)

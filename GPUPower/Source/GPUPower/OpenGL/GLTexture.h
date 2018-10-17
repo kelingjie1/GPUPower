@@ -29,14 +29,16 @@ namespace GPUPower
         
         virtual void init()
         {
-            GLObject::init();
+            auto c = context.lock();
+            c->check(true);
             glGenTextures(1, &textureID);
+            ready = true;
         }
 
         virtual void cleanup()
         {
-            GLObject::cleanup();
             auto c = context.lock();
+            c->check(true);
             GLuint tex = textureID;
             c->checkAndAsyncTask([=]{
                 glDeleteTextures(1, &tex);
@@ -46,7 +48,7 @@ namespace GPUPower
 
         void setImageData(const GLvoid *pixels, GLsizei width,GLsizei height,GLenum internalformat=GL_RGBA,GLenum format=GL_BGRA)
         {
-            check();
+            check(true);
             glBindTexture(GL_TEXTURE_2D, textureID);
             checkError();
             if (pixels)
@@ -64,9 +66,7 @@ namespace GPUPower
 
         void activeAndBind(GLuint index)
         {
-            auto c = context.lock();
-            c->check();
-            checkInit();
+            check(true);
             glActiveTexture(GL_TEXTURE0+index);
             checkError();
             glBindTexture(GL_TEXTURE_2D, textureID);

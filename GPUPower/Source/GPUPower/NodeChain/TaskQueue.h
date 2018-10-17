@@ -115,7 +115,11 @@ namespace NodeChain
         ~TaskQueue()
         {
             stop();
-            thread.join();
+            if (thread.joinable())
+            {
+                thread.join();
+            }
+            
         }
         
     };
