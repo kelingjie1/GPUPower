@@ -157,7 +157,7 @@ namespace GPUPower
         
         static shared_ptr<GLVertexArray<GLBaseVertex>> basicVertexArray()
         {
-            if (!basicVertexArrayInstance())
+            if (!basicVertexArrayInstance()||!basicVertexArrayInstance()->context.lock().get())
             {
                 basicVertexArrayInstance() = GLVertexArray<GLBaseVertex>::create(GLContext::current());
                 

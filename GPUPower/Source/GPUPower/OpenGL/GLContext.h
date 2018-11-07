@@ -62,11 +62,12 @@ namespace GPUPower
             }
             else
             {
-                taskQueue.start([=]
-                                {
-                                    GPUPowerIOSBridge::setContext(this);
-                                    currentContext() = s;
-                                });
+                taskQueue.start();
+                taskQueue.addTask([=]
+                                  {
+                                      GPUPowerIOSBridge::setContext(this);
+                                      currentContext() = s;
+                                  });
             }
             
         }

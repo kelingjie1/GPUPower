@@ -44,11 +44,6 @@ using namespace GPUPower;
     [GPUPowerIOSTools setDataForGLTexture:texture image:image.CGImage];
     textureNode->setTexture(texture);
     [self.glview setInput:textureNode];
-    
-//    shared_ptr<GLShaderRenderNode> node0(new GLShaderRenderNode(renderContext));
-//    node0->program = GLProgram::create(renderContext);
-//    node0->program->loadFromFile(GPUPower::passThroughVertexShader, GPUPower::passThroughFragmentShader);
-//    
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect

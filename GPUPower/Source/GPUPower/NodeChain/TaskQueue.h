@@ -83,17 +83,14 @@ namespace NodeChain
         std::thread thread;
         thread_safe_queue<std::function<void()>> queue;
     public:
-        void start(std::function<void ()> startfunc = NULL)
+        void start()
         {
             isStoped = false;
             thread = std::thread([=](){
-                if (startfunc)
-                {
-                    startfunc();
-                }
-                std::function<void ()> func;
+                
                 while (!isStoped)
                 {
+                    std::function<void ()> func;
                     queue.wait_and_pop(func);
                     func();
                 }
